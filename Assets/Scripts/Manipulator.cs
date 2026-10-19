@@ -38,23 +38,22 @@ public class ManipulatorHinge : MonoBehaviour
 
     void Update()
     {
-        if (keyboardControle) {
-            if (Input.GetKeyDown(KeyCode.A)) RotateJoint(1, -15f);
-            if (Input.GetKeyDown(KeyCode.D)) RotateJoint(1, 15f);
-            if (Input.GetKeyDown(KeyCode.Q)) RotateJoint(2, -15f);
-            if (Input.GetKeyDown(KeyCode.E)) RotateJoint(2, 15f);
-            if (Input.GetKeyDown(KeyCode.W)) RotateJoint(3, -15f);
-            if (Input.GetKeyDown(KeyCode.S)) RotateJoint(3, 15f);
-            if (Input.GetKeyDown(KeyCode.Z)) RotateJoint(4, -15f);
-            if (Input.GetKeyDown(KeyCode.X)) RotateJoint(4, 15f);
-        }
+        if (Input.GetKeyDown(KeyCode.A)) RotateArm1(-15f);
+        if (Input.GetKeyDown(KeyCode.D)) RotateArm1(15f);
+        if (Input.GetKeyDown(KeyCode.Q)) RotateArm2(-15f);
+        if (Input.GetKeyDown(KeyCode.E)) RotateArm2(15f);
+        if (Input.GetKeyDown(KeyCode.W)) RotateClaws(-15f);
+        if (Input.GetKeyDown(KeyCode.S)) RotateClaws(15f);
+        if (Input.GetKeyDown(KeyCode.Z)) RotateHookBase(-15f);
+        if (Input.GetKeyDown(KeyCode.X)) RotateHookBase(15f);
 
-            // Uppdatera motorerna för alla leder
-            UpdateMotor(arm1Hinge, arm1TargetAngle);
-            UpdateMotor(arm2Hinge, arm2TargetAngle);
-            UpdateMotor(hookBaseHinge, hookBaseTargetAngle);
-            UpdateMotor(hookLeftHinge, hookLeftTargetAngle);
-            UpdateMotor(hookRightHinge, hookRightTargetAngle);
+
+        // Uppdatera motorerna för alla leder
+        UpdateMotor(arm1Hinge, arm1TargetAngle);
+        UpdateMotor(arm2Hinge, arm2TargetAngle);
+        UpdateMotor(hookBaseHinge, hookBaseTargetAngle);
+        UpdateMotor(hookLeftHinge, hookLeftTargetAngle);
+        UpdateMotor(hookRightHinge, hookRightTargetAngle);
     }
 
     void UpdateMotor(HingeJoint2D hinge, float targetAngle)
@@ -80,26 +79,27 @@ public class ManipulatorHinge : MonoBehaviour
         hinge.motor = motor;
     }
 
-    public void RotateJoint(int jointIndex, float angleDelta)
+    public void RotateArm1(float angleDelta)
     {
-        switch (jointIndex)
-        {
-            case 1:
-                arm1TargetAngle = arm1Hinge.jointAngle;
-                arm1TargetAngle += angleDelta; 
-                break;
-            case 2:
-                arm2TargetAngle = arm2Hinge.jointAngle;
-                arm2TargetAngle += angleDelta; 
-                break;
-            case 3:
-                hookLeftTargetAngle += angleDelta;
-                hookRightTargetAngle -= angleDelta; 
-                break;
-            case 4:
-                hookBaseTargetAngle = hookBaseHinge.jointAngle;
-                hookBaseTargetAngle += angleDelta;
-                break;
-        }
+        arm1TargetAngle = arm1Hinge.jointAngle;
+        arm1TargetAngle += angleDelta; 
+    }
+
+    public void RotateArm2(float angleDelta)
+    {
+        arm2TargetAngle = arm2Hinge.jointAngle;
+        arm2TargetAngle += angleDelta; 
+    }
+
+    public void RotateHookBase(float angleDelta)
+    {
+        hookBaseTargetAngle = hookBaseHinge.jointAngle;
+        hookBaseTargetAngle += angleDelta; 
+    }
+
+    public void RotateClaws(float angleDelta)
+    {
+        hookLeftTargetAngle += angleDelta;
+        hookRightTargetAngle -= angleDelta; 
     }
 }
