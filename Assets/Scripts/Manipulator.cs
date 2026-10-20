@@ -38,15 +38,16 @@ public class ManipulatorHinge : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) RotateArm1(-15f);
-        if (Input.GetKeyDown(KeyCode.D)) RotateArm1(15f);
-        if (Input.GetKeyDown(KeyCode.Q)) RotateArm2(-15f);
-        if (Input.GetKeyDown(KeyCode.E)) RotateArm2(15f);
-        if (Input.GetKeyDown(KeyCode.W)) RotateClaws(-15f);
-        if (Input.GetKeyDown(KeyCode.S)) RotateClaws(15f);
-        if (Input.GetKeyDown(KeyCode.Z)) RotateHookBase(-15f);
-        if (Input.GetKeyDown(KeyCode.X)) RotateHookBase(15f);
-
+        if (keyboardControle) { 
+            if (Input.GetKeyDown(KeyCode.A)) RotateArm1(-15f);
+            if (Input.GetKeyDown(KeyCode.D)) RotateArm1(15f);
+            if (Input.GetKeyDown(KeyCode.Q)) RotateArm2(-15f);
+            if (Input.GetKeyDown(KeyCode.E)) RotateArm2(15f);
+            if (Input.GetKeyDown(KeyCode.W)) RotateClaws(-15f);
+            if (Input.GetKeyDown(KeyCode.S)) RotateClaws(15f);
+            if (Input.GetKeyDown(KeyCode.Z)) RotateWrist(-15f);
+            if (Input.GetKeyDown(KeyCode.X)) RotateWrist(15f);
+        }
 
         // Uppdatera motorerna för alla leder
         UpdateMotor(arm1Hinge, arm1TargetAngle);
@@ -91,7 +92,7 @@ public class ManipulatorHinge : MonoBehaviour
         arm2TargetAngle += angleDelta; 
     }
 
-    public void RotateHookBase(float angleDelta)
+    public void RotateWrist(float angleDelta)
     {
         hookBaseTargetAngle = hookBaseHinge.jointAngle;
         hookBaseTargetAngle += angleDelta; 
@@ -99,7 +100,7 @@ public class ManipulatorHinge : MonoBehaviour
 
     public void RotateClaws(float angleDelta)
     {
-        hookLeftTargetAngle += angleDelta;
-        hookRightTargetAngle -= angleDelta; 
+        hookLeftTargetAngle -= angleDelta;
+        hookRightTargetAngle += angleDelta; 
     }
 }
