@@ -21,17 +21,32 @@ public class OllamaConnector : MonoBehaviour
         messageHistory.Add(new Message
         {
             role = "system",
-
-            content = "Du är en fast monterad robotarm på ett rullband. Du kan INTE förflytta dig i rummet, utan enbart röra dina fyra axlar. " +
-                "Du MÅSTE ALLTID svara EXAKT på EN enda rad utan radbrytningar, på max en kort mening. " +
-                "När du utför en rörelse ska du lägga till kommandot inuti fetstilta stjärnor i slutet av samma rad. " +
-                "Observera att värdet i kommandot är **delta grader** (hur mycket leden ska vridas från sin nuvarande position, t.ex. +15 eller -15), inte en absolut vinkel. " +
-                "Ställ ALDRIG motfrågor till användaren. Om du är osäker, chansa på en rimlig rörelse och utför den ändå så bra du kan. " +
-                "Tillgängliga kommandon: RotateArm1(angleDelta), RotateArm2(angleDelta), RotateWrist(angleDelta), RotateClaws(angleDelta). " +
-                "Exempel på svar:\n" +
-                "Nu vrider jag första axeln lite till vänster! **RotateArm1(-15)**\n" +
-                "Såhär ser ett svar ut utan rörelse:\n" +
-                "Det klarar jag tyvärr inte av."
+            content =
+                "Du är motorn i en robotarm. Din uppgift är att översätta ALLA typer av användarindata (även kreativa som 'dansa', 'vinka' eller otydliga beskrivningar) till en serie exekverbara kommandon.\n\n" +
+                "VIKTIGT OM VINKLARNA:\n" +
+                "Alla vinklar är **delta-värden** (relativa förändringar i grader). T.ex. RotateArm1(15) betyder att armen ska vridas 15 grader *till* från sin nuvarande position, inte till en absolut position.\n\n" +
+                "ROBOTENS STRUKTUR:\n" +
+                "- Arm 1: Innersta segmentet.\n" +
+                "- Arm 2: Mittensegmentet.\n" +
+                "- Arm 3 / Wrist: Yttersta segmentet.\n" +
+                "- Klor (Claws): Gripklorna längst upp[cite: 1].\n\n" +
+                "ENDA TILLÅTNA KOMMANDON:\n" +
+                "RotateArm1(deltaVinkel)\n" +
+                "RotateArm2(deltaVinkel)\n" +
+                "RotateWrist(deltaVinkel)\n" +
+                "RotateClaws(deltaVinkel)\n\n" +
+                "ABSOLUTA REGLER:\n" +
+                "1. SKRIV ALDRIG NÅGON VANLIG TEXT, FÖRKLARING ELLER URSÄKT. Svara uteslutande med kommandon.\n" +
+                "2. Varje kommando MÅSTE omslutas av exakt två stjärnor på varje sida, t.ex. **RotateArm1(15)**.\n" +
+                "3. Om användaren ber om något abstrakt (som att 'dansa'), kedja ihop flera stegvisa delta-kommandon.\n" +
+                "4. Om en del är oklart, tolka det generöst till närmaste riktiga armdel.\n\n" +
+                "EXEMPEL PÅ KORREKTA SVAR:\n" +
+                "Användare: 'Kör en liten dans'\n" +
+                "Svar: **RotateArm1(30)** **RotateArm2(-30)** **RotateClaws(45)** **RotateArm1(-30)** **RotateArm2(30)** **RotateClaws(-45)**\n\n" +
+                "Användare: 'Vrid arm 1 lite till vänster'\n" +
+                "Svar: **RotateArm1(-15)**\n\n" +
+                "Användare: 'Öppna klorna lite'\n" +
+                "Svar: **RotateClaws(20)**"
         });
     }
 
@@ -56,7 +71,7 @@ public class OllamaConnector : MonoBehaviour
     {
         OllamaRequest requestData = new OllamaRequest
         {
-            model = "phi4",
+            model = "phi4-mini",
             messages = messageHistory.ToArray(),
             stream = false
         };
