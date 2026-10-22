@@ -100,7 +100,7 @@ public class OllamaConnector : MonoBehaviour
     {
         OllamaRequest requestData = new OllamaRequest
         {
-            model = "phi4",
+            model = "phi4-mini",
             messages = messageHistory.ToArray(),
             stream = false
         };
