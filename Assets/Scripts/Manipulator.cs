@@ -14,7 +14,7 @@ public class ManipulatorHinge : MonoBehaviour
     public float acceleration = 600f; // Hur snabbt den startar/stannar (högre = rappare, lägre = tyngre)
 
     [Header("Maskin-inställningar")]
-    public bool keyboardControle = true;
+    public bool keyboardControle = false;
 
     private float arm1TargetAngle;
     private float arm2TargetAngle;
