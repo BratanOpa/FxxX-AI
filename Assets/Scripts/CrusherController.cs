@@ -22,7 +22,7 @@ public class CrusherController : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator pressAnimator;
 
-    [SerializeField] private ParticleSystem crushParticles;
+    [SerializeField] private ParticleSystem crushParticles, crushDust;
     [SerializeField] private GameObject crushedBoxVisual;
 
     [Header("Vinst")]
@@ -106,6 +106,7 @@ public class CrusherController : MonoBehaviour
 
         if (crushParticles != null)
             crushParticles.Play();
+            crushDust.Play();
     }
     
     public void WinGame()
