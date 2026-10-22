@@ -100,7 +100,7 @@ public class ManipulatorHinge : MonoBehaviour
 
     public void RotateClaws(float angleDelta)
     {
-        hookLeftTargetAngle -= angleDelta;
-        hookRightTargetAngle += angleDelta; 
+        hookLeftTargetAngle = hookLeftHinge.jointAngle - angleDelta;
+        hookRightTargetAngle = -hookLeftTargetAngle; 
     }
 }
