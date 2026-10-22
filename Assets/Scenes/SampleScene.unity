@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 20549816}
   - component: {fileID: 20549817}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FckerPress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 58195660}
   - component: {fileID: 58195661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ClearanceZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 245228957}
   - component: {fileID: 245228959}
   - component: {fileID: 245228958}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HookRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 246696271}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FckerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 370113714}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1401,7 +1401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 560461461}
   - component: {fileID: 560461462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoxZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1457,7 +1457,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.7096596, y: -0.79336}
+  m_Offset: {x: 1.7096596, y: -0.6246716}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1467,7 +1467,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.3469558, y: 0.40608406}
+  m_Size: {x: 1.3469558, y: 0.7434609}
   m_EdgeRadius: 0
 --- !u!1 &564312936
 GameObject:
@@ -2279,7 +2279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 777506240}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2393,7 +2393,7 @@ GameObject:
   - component: {fileID: 784241808}
   - component: {fileID: 784241809}
   - component: {fileID: 784241810}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6615,7 +6615,7 @@ GameObject:
   - component: {fileID: 973334949}
   - component: {fileID: 973334950}
   - component: {fileID: 973334951}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6810,7 +6810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1076938869}
   - component: {fileID: 1076938868}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fcker_Main_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9688,7 +9688,7 @@ GameObject:
   - component: {fileID: 1159495923}
   - component: {fileID: 1159495925}
   - component: {fileID: 1159495924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HookLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10304,7 +10304,7 @@ GameObject:
   - component: {fileID: 1205033748}
   - component: {fileID: 1205033750}
   - component: {fileID: 1205033749}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HookBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11007,7 +11007,7 @@ GameObject:
   - component: {fileID: 1490956132}
   - component: {fileID: 1490956133}
   - component: {fileID: 1490956134}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11833,7 +11833,7 @@ GameObject:
   - component: {fileID: 1831534717}
   - component: {fileID: 1831534719}
   - component: {fileID: 1831534720}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fcker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12005,7 +12005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1872786847}
   - component: {fileID: 1872786848}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Manipulator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12064,7 +12064,7 @@ GameObject:
   - component: {fileID: 1918150794}
   - component: {fileID: 1918150796}
   - component: {fileID: 1918150795}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FckerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
