@@ -16,11 +16,25 @@ public class ManipulatorHinge : MonoBehaviour
     [Header("Maskin-inställningar")]
     public bool keyboardControle = true;
 
+    [Header("Movement sound")]
+    public AudioSource movementAudio;
+    public AudioClip movementClip;
+
     private float arm1TargetAngle;
     private float arm2TargetAngle;
     private float hookBaseTargetAngle;
     private float hookLeftTargetAngle;
     private float hookRightTargetAngle;
+
+
+    //start angles 
+    private float arm1StartAngle;
+    private float arm2StartAngle;
+    private float hookBaseStartAngle;
+    private float hookLeftStartAngle;
+    private float hookRightStartAngle;
+
+
 
     void Start()
     {
@@ -33,6 +47,20 @@ public class ManipulatorHinge : MonoBehaviour
                 Physics2D.IgnoreCollision(allColliders[i], allColliders[j]);
             }
         }
+
+
+        arm1StartAngle = arm1Hinge.jointAngle;
+        arm2StartAngle = arm2Hinge.jointAngle;
+        hookBaseStartAngle = hookBaseHinge.jointAngle;
+        hookLeftStartAngle = hookLeftHinge.jointAngle;
+        hookRightStartAngle = hookRightHinge.jointAngle;
+
+        // Start each target at the current angle so the arm stays still initially.
+        arm1TargetAngle = arm1StartAngle;
+        arm2TargetAngle = arm2StartAngle;
+        hookBaseTargetAngle = hookBaseStartAngle;
+        hookLeftTargetAngle = hookLeftStartAngle;
+        hookRightTargetAngle = hookRightStartAngle;
 
     }
 
@@ -83,24 +111,47 @@ public class ManipulatorHinge : MonoBehaviour
     public void RotateArm1(float angleDelta)
     {
         arm1TargetAngle = arm1Hinge.jointAngle;
-        arm1TargetAngle += angleDelta; 
+        arm1TargetAngle += angleDelta;
+        PlayMovementSound();
     }
 
     public void RotateArm2(float angleDelta)
     {
         arm2TargetAngle = arm2Hinge.jointAngle;
-        arm2TargetAngle += angleDelta; 
+        arm2TargetAngle += angleDelta;
+        PlayMovementSound();
     }
 
     public void RotateWrist(float angleDelta)
     {
         hookBaseTargetAngle = hookBaseHinge.jointAngle;
-        hookBaseTargetAngle += angleDelta; 
+        hookBaseTargetAngle += angleDelta;
+        PlayMovementSound();
     }
 
     public void RotateClaws(float angleDelta)
     {
         hookLeftTargetAngle -= angleDelta;
-        hookRightTargetAngle += angleDelta; 
+        hookRightTargetAngle += angleDelta;
+        PlayMovementSound();
+    }
+
+    public void ResetArm()
+    {
+        arm1TargetAngle = arm1StartAngle;
+        arm2TargetAngle = arm2StartAngle;
+        hookBaseTargetAngle = hookBaseStartAngle;
+        hookLeftTargetAngle = hookLeftStartAngle;
+        hookRightTargetAngle = hookRightStartAngle;
+        PlayMovementSound();
+    }
+
+    private void PlayMovementSound()
+    {
+        if (movementAudio != null && movementClip != null)
+        {
+            movementAudio.pitch = Random.Range(0.95f, 1.05f);
+            movementAudio.PlayOneShot(movementClip);
+        }
     }
 }
