@@ -43,11 +43,12 @@ public class Reset : MonoBehaviour
 
         targetImageRect.localScale = originalScale;
 
-        PlayAgain();
+        Invoke("PlayAgain", 1f);
+
     }
     public void PlayAgain()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
